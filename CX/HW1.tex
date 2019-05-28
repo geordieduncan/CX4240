@@ -1,0 +1,83 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\newtheorem{case}{Case}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tr}{\textnormal{tr}}
+\newcommand{\iCup}{$\small$\bigcup\limits_{i \in I}$\normalsize$}
+\newcommand{\iCap}{\bigcap\limits_{i \in I}}
+\newcommand{\diam}{\textnormal{diam}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\dist}{\textnormal{dist}}
+
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Weekly Homework 10}
+\author{George Duncan MATH 4317} 
+\maketitle
+\date
+
+
+\begin{problem}\label{1)}
+	$\Sigma = $
+	$\begin{bmatrix}
+	1&r\\r&1
+	\end{bmatrix}$
+	\\
+	We must have $\Sigma$ positive definite. By the Cauchy-Schwartz inequality:\tabularnewline\\
+	$\textnormal{cov}(X_1, X_2)^2 \leq \textnormal{cov}(X_1, X_1) \textnormal{cov}(X_2, X_2)$\\
+	$\textnormal{cov}(X_1, X_2)^2 \leq \textnormal{var}(X_1) \textnormal{var}(X_2)$\\
+	$r^2 \leq 1$ ... $r\in[-1, 1]$\\
+	For both $r = -1, r = 1$, the determinant of the matrix is 0, therefore the matrix is degenerate. Thus: $r \in (-1, 1)$. We can use the following expansion for the joint probability density function:\\
+	$$\Pr(X = x) = p(X) = \frac{1}{2\pi}\det(\Sigma)^{-1}\exp(-q(X-\mu))$$, where $q$ is defined by the following:\\
+	$$q(Z) = \frac{\frac{z_1^2}{\Sigma_{1,1}^2} - \frac{2\sqrt{1-\det(\Sigma)}z_1z_2}{\tr(\Sigma)} + \frac{z_2^2}{\Sigma_{2,2}^2}}{2\det(\Sigma)}$$
+	Substituting in the values form this problem:\\
+	$$p(X) = \frac{1}{2\pi(1-r^2)}\exp(-\frac{(x_1-\mu_1)^2 - 2r(x_1-\mu_1)(x_2-\mu_2) + (x_2-\mu_2)^2}{2(1-r^2)})$$
+	\\
+	\\
+	\\
+	For the eigen values we must set the determinant of the matrix equal to 0:\\
+	$\det(\Sigma) = 0 = (1-\lambda)^2-r^2$, thus $\lambda = 1 \pm r$. Consider the positive case $\lambda_1$, and the negative case $\lambda_2$. For each $\lambda$ we can find the corresponding eigen vectors accordingly:\\
+	$(\Sigma - \lambda I)v = 0$\\
+	$\begin{bmatrix}
+	-r&r\\r&-r\\
+	\end{bmatrix}v_1 = $
+	$\begin{bmatrix}0\\0 \end{bmatrix}$, thus $v_1 = c(1, 1) : c\in \R$, after normalization:
+	$v_1 = (\frac{\sqrt(2)}{2}, \frac{\sqrt(2)}{2})$ 
+	$\begin{bmatrix}
+	r&r\\r&r\\
+	\end{bmatrix}v_1 = $
+	$\begin{bmatrix}0\\0 \end{bmatrix}$, thus $v_2 = c(1, -1) : c\in \R$, after normalization:
+	$v_2 = (\frac{\sqrt(2)}{2}, \frac{-\sqrt(2)}{2})$ 
+\end{problem}
+\end{document}
